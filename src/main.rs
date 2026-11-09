@@ -5,8 +5,7 @@ fn main() {
         println!("School's out");
     } else if season == "winter" {
         println!("Cold");
-    }
-    else if season == "fall" {
+    } else {
         println!("Leaves falling");
     }
 }
