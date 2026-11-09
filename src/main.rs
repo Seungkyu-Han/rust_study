@@ -5,4 +5,6 @@ fn main() {
         true => 20,
         false => 30,
     };
+
+    println!("{}", value);
 }
