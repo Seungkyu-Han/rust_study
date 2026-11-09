@@ -1,7 +1,8 @@
 fn main() {
-    let mut seconds: i32 = 10;
 
-    loop {
+    let mut seconds: i32 = 21;
+
+    while seconds > 0 {
         seconds -= 1;
 
         if seconds % 2 == 0 {
@@ -9,8 +10,5 @@ fn main() {
         }
 
         println!("{seconds} seconds to blastoff...");
-        if seconds <= 0 {
-            break;
-        }
     }
 }
