@@ -1,10 +1,12 @@
 fn main() {
-    let evaluation: i32 = 100;
 
-    let value = match evaluation {
-        1 | 100 => 20,
-        _ => 30,
-    };
+    let mut seconds: i32 = 10;
 
-    println!("{}", value);
+    loop {
+        println!("{seconds} seconds to blastoff...");
+        seconds -= 1;
+        if seconds == 0 {
+            break;
+        }
+    }
 }
