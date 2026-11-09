@@ -1,11 +1,12 @@
-fn main() {
-    let season: &str = "summer";
-
-    if season == "summer" {
-        println!("School's out");
-    } else if season == "winter" {
-        println!("Cold");
+fn even_or_odd(number: i32) -> String {
+    if number % 2 == 0 {
+        String::from("even") // 또는 "even".to_string()
     } else {
-        println!("Leaves falling");
+        String::from("odd")
     }
+}
+
+fn main() {
+    println!("{}", even_or_odd(4)); // "even"
+    println!("{}", even_or_odd(7)); // "odd"
 }
