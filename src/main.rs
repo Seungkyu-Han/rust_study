@@ -1,9 +1,9 @@
 fn main() {
-    let evaluation: bool = true;
+    let evaluation: i32 = 100;
 
     let value = match evaluation {
-        true => 20,
-        false => 30,
+        1 => 20,
+        _ => 30,
     };
 
     println!("{}", value);
