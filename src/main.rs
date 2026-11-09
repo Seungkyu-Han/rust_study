@@ -1,12 +1,12 @@
 fn main() {
+    let season: &str = "summer";
 
-    let some_condition_that_we_cannot_predict_in_advance: bool = true;
-
-    if some_condition_that_we_cannot_predict_in_advance {
-        println!("true");
+    if season == "summer" {
+        println!("School's out");
+    } else if season == "winter" {
+        println!("Cold");
     }
-
-    if !some_condition_that_we_cannot_predict_in_advance {
-        println!("false");
+    else if season == "fall" {
+        println!("Leaves falling");
     }
 }
