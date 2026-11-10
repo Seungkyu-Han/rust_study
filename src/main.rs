@@ -2,5 +2,7 @@ fn main() {
 
     let ice_cream: &str = "Cookies and Cream";
 
-    println!("ice_cream is {ice_cream}");
+    let dessert: &str = ice_cream;
+
+    println!("{ice_cream} {dessert}");
 }
