@@ -9,4 +9,6 @@ fn main() {
     println!("my_integer_reference is {my_integer_reference}");
     println!("my_heap_value is {my_heap_value}");
     println!("my_heap_reference is {my_heap_reference}");
+
+    println!("{:p}", &my_stack_value);
 }
