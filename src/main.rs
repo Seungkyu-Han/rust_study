@@ -1,14 +1,11 @@
 fn main() {
+    let age: i32 = 33;
 
-    let mut seconds: i32 = 21;
+    {
+        let is_handsome: bool = true;
 
-    while seconds > 0 {
-        seconds -= 1;
-
-        if seconds % 2 == 0 {
-            continue;
-        }
-
-        println!("{seconds} seconds to blastoff...");
+        println!("is handsome is {is_handsome}");
     }
+
+    println!("age is: {age}");
 }
