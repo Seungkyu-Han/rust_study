@@ -1,8 +1,9 @@
 fn main() {
-    let burger: String = String::from("Burger");
-    add_fries(burger);
+    let cake = bake_cake();
+
+    println!("{} is cake", cake);
 }
 
-fn add_fries(mut meal: String) {
-    meal.push_str(" and fries")
+fn bake_cake() -> String {
+    String::from("Cake")
 }
