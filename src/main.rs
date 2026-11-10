@@ -1,4 +1,9 @@
 fn main() {
-    let food: &str = "pasta";
-    let food1: String = String::new();
+    let mut name = String::from("Boris");
+
+    println!("name is {name}");
+
+    name.push_str(" Pask");
+
+    println!("name is {name}");
 }
