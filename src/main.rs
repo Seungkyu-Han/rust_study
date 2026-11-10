@@ -1,7 +1,4 @@
 fn main() {
-    let time: i32 = 2025;
-    let year: i32 = time;
-
-    println!("time is {time}");
-    println!("year is {year}");
+    let food: &str = "pasta";
+    let food1: String = String::new();
 }
