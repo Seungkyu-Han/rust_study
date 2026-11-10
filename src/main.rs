@@ -1,9 +1,9 @@
 fn main() {
-    let mut name = String::from("Boris");
+    let person = String::from("Boris");
 
-    println!("name is {name}");
+    let genious = person;
 
-    name.push_str(" Pask");
+    //println!("person is {person}");
 
-    println!("name is {name}");
+    println!("genious is {genious}");
 }
