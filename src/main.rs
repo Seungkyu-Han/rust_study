@@ -1,11 +1,7 @@
 fn main() {
-    let age: i32 = 33;
+    let time: i32 = 2025;
+    let year: i32 = time;
 
-    {
-        let is_handsome: bool = true;
-
-        println!("is handsome is {is_handsome}");
-    }
-
-    println!("age is: {age}");
+    println!("time is {time}");
+    println!("year is {year}");
 }
