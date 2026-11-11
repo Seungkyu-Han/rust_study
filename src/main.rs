@@ -5,18 +5,16 @@ struct Coffee {
 }
 
 fn main() {
-    let mocha = Coffee {
+    let mut beverage = Coffee {
         price: 2.5,
         name: String::from("mocha"),
         is_hot: true,
     };
 
-    println!("Mocha name: {}", mocha.name);
-    println!("Mocha price: {}", mocha.price);
-    println!("Mocha is hot: {}", mocha.is_hot);
+    beverage.name = String::from("latte");
 
-    let favorite_coffee = mocha.name.clone();
-
-    println!("Mocha name: {}", mocha.name);
-    println!("Favorite coffee: {}", favorite_coffee);
+    println!(
+        "My {} this morning cost {}. It is {} that it was hot",
+        beverage.name, beverage.price, beverage.is_hot
+    );
 }
