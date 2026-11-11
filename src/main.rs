@@ -1,7 +1,7 @@
 fn main() {
-    let mut coffee: String = String::from("Mocha");
-    let a = &mut coffee;
-    let b = a;
+    let action_hero = String::from("Seungkyu Han");
 
-    println!("and {b}");
+    let first_name = &action_hero[0..111];
+
+    println!("{} is cool", first_name);
 }
