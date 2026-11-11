@@ -1,9 +1,4 @@
 fn main() {
-    let values = [4, 8, 15, 16, 23, 42];
-
-    print_length(&values);
-}
-
-fn print_length(reference: &[i32; 6]) {
-    println!("{}", reference.len());
+    let mut my_array = [10, 15, 20, 25, 30];
+    let my_slice = &mut my_array[2..4];
 }
