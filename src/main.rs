@@ -1,13 +1,7 @@
-fn do_hero_stuff(hero_name: &str) {
-    println!("{hero_name} saves the day");
-}
-
 fn main() {
-    let action_hero = String::from("Arnold Schwarzenegger");
+    let values = [4, 8, 15, 16, 23, 42];
 
-    do_hero_stuff(&action_hero);
+    let my_slice = &values[0..3];
 
-    let another_action_hero = "Sylvester Stallone";
-
-    do_hero_stuff(&another_action_hero);
+    println!("{my_slice:?}");
 }
