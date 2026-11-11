@@ -1,5 +1,7 @@
 fn main() {
-    let mut car = String::from("Red");
-    let ref1 = &mut car;
-    let ref2 = &mut car;
+    let mut coffee: String = String::from("Mocha");
+    let a = &mut coffee;
+    let b = a;
+
+    println!("and {b}");
 }
