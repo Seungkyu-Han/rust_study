@@ -1,12 +1,13 @@
+fn do_hero_stuff(hero_name: &str) {
+    println!("{hero_name} saves the day");
+}
+
 fn main() {
     let action_hero = String::from("Arnold Schwarzenegger");
 
-    let first_name = &action_hero[0..6];
-    println!("His first name is {first_name}");
+    do_hero_stuff(&action_hero);
 
-    let last_name = &action_hero[0..6];
-    println!("His last name is {last_name}");
+    let another_action_hero = "Sylvester Stallone";
 
-    let full_name = &action_hero[..];
-    println!("His full name is {full_name}");
+    do_hero_stuff(&another_action_hero);
 }
