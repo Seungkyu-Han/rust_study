@@ -6,15 +6,24 @@ struct Song {
 }
 
 impl Song {
+    fn new(title: String, release_year: u32, duration_secs: u32) -> Self {
+        Self {
+            title,
+            release_year,
+            duration_secs,
+        }
+    }
+
     fn display_song_info(&self) {
         println!(
             "{} {} {}",
             self.title, self.release_year, self.duration_secs
         );
         println!("Years since release: {}", self.years_since_release());
+
+        let a = String::new();
     }
 
-    // 더 관용적인(idiomatic) 표현
     fn double_length(&mut self) {
         self.duration_secs *= 2;
         println!("{:#?}", self);
@@ -36,11 +45,7 @@ fn main() {
         duration_secs: 123,
     };
 
-    let mut song2 = Song {
-        title: String::from("Hello Song2"),
-        release_year: 2025,
-        duration_secs: 123,
-    };
+    let song2 = Song::new(String::from("song2"), 2222, 22);
 
     song1.double_length();
 
