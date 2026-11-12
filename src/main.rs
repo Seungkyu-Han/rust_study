@@ -13,11 +13,20 @@ fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
 }
 
 fn main() {
-    let name = String::from("Latte");
-    let coffee = make_coffee(name, 4.99, true);
+    let mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
+
+    let caramel_macchiato = Coffee {
+        name: String::from("caramel_macchiato"),
+        ..mocha
+    };
 
     println!(
-        "My {} this morning cost {}. It is {} that it was hot",
-        coffee.name, coffee.price, coffee.is_hot
+        "I'd like a {} which costs {}. It is {} that it's hot",
+        caramel_macchiato.name, caramel_macchiato.price, caramel_macchiato.is_hot
+    );
+
+    println!(
+        "I'd like a {} which costs {}. It is {} that it's hot",
+        mocha.name, mocha.price, mocha.is_hot
     );
 }
