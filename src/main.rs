@@ -12,6 +12,11 @@ impl Song {
             self.title, self.release_year, self.duration_secs
         );
     }
+
+    fn double_length(mut self: Self) {
+        self.duration_secs = self.duration_secs * 2;
+        println!("{:#?}", self);
+    }
 }
 
 fn main() {
@@ -21,7 +26,7 @@ fn main() {
         duration_secs: 123,
     };
 
-    song.display_song_info();
+    song.double_length();
 
     //println!("{:?}", song);
 }
