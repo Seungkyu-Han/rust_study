@@ -1,13 +1,11 @@
 #[derive(Debug)]
-enum CardSuit {
-    Hearts,
-    Diamonds,
-    Spades,
-    Clubs,
+enum PaymentMethodType {
+    CreditCard(String),
+    DebitCard(String),
+    PayPal(String),
 }
 
 fn main() {
-    let first_card = CardSuit::Hearts;
-    let mut second_card = CardSuit::Spades;
-    second_card = CardSuit::Diamonds;
+    let visa = PaymentMethodType::CreditCard(String::from("dddd"));
+    println!("{:?}", visa);
 }
