@@ -13,7 +13,9 @@ impl Song {
             duration_secs,
         }
     }
+}
 
+impl Song {
     fn display_song_info(&self) {
         println!(
             "{} {} {}",
