@@ -1,27 +1,27 @@
 #[derive(Debug)]
-struct Coffee {
-    price: f64,
-    name: String,
-    is_hot: bool,
+struct Song {
+    title: String,
+    release_year: u32,
+    duration_secs: u32,
 }
 
-fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
-    Coffee {
-        name,
-        price,
-        is_hot,
+impl Song {
+    fn display_song_info(self: Self) {
+        println!(
+            "{} {} {}",
+            self.title, self.release_year, self.duration_secs
+        );
     }
 }
 
-fn drink_coffee(coffee: &mut Coffee) {
-    println!("Drinking my delicious: {}", coffee.name);
-    coffee.is_hot = false;
-}
-
 fn main() {
-    #[allow(unused_variables)]
-    let mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
+    let song = Song {
+        title: String::from("Hello Song"),
+        release_year: 2025,
+        duration_secs: 123,
+    };
 
-    println!("{:?}", mocha);
-    println!("{:#?}", mocha);
+    song.display_song_info();
+
+    //println!("{:?}", song);
 }
