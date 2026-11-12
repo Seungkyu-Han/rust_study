@@ -12,21 +12,15 @@ fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
     }
 }
 
+fn drink_coffee(coffee: &mut Coffee) {
+    println!("Drinking my delicious: {}", coffee.name);
+    coffee.is_hot = false;
+}
+
 fn main() {
-    let mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
+    let mut mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
 
-    let caramel_macchiato = Coffee {
-        name: String::from("caramel_macchiato"),
-        ..mocha
-    };
+    drink_coffee(&mut mocha);
 
-    println!(
-        "I'd like a {} which costs {}. It is {} that it's hot",
-        caramel_macchiato.name, caramel_macchiato.price, caramel_macchiato.is_hot
-    );
-
-    println!(
-        "I'd like a {} which costs {}. It is {} that it's hot",
-        mocha.name, mocha.price, mocha.is_hot
-    );
+    println!("{} coffee is {} hot", mocha.name, mocha.is_hot);
 }
