@@ -4,17 +4,19 @@ struct Coffee {
     is_hot: bool,
 }
 
-fn main() {
-    let mut beverage = Coffee {
-        price: 2.5,
-        name: String::from("mocha"),
-        is_hot: true,
-    };
+fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
+    Coffee {
+        name: name,
+        price: price,
+        is_hot: is_hot,
+    }
+}
 
-    beverage.name = String::from("latte");
+fn main() {
+    let coffee = make_coffee(String::from("Latte"), 4.99, true);
 
     println!(
         "My {} this morning cost {}. It is {} that it was hot",
-        beverage.name, beverage.price, beverage.is_hot
+        coffee.name, coffee.price, coffee.is_hot
     );
 }
