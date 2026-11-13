@@ -1,16 +1,13 @@
-#[derive(Debug)]
-enum CheeseSteak<T> {
-    Plain,
-    Topping(T),
-}
-
 fn main() {
-    let mushroom = CheeseSteak::Topping("mushroom");
-    let onions = CheeseSteak::Topping("onions".to_string());
-    let topping = "bacon".to_string();
-    let bacon = CheeseSteak::Topping(&topping);
+    let musical_instruments: [String; 3] = [
+        String::from("Guitar"),
+        String::from("Drums"),
+        String::from("Bass"),
+    ];
 
-    let plain: CheeseSteak<String> = CheeseSteak::Plain;
+    let third = musical_instruments.get(2);
+    let fourth: Option<&String> = musical_instruments.get(3);
 
-    println!("{:?}", plain);
+    println!("{:?}", third);
+    println!("{:?}", fourth);
 }
