@@ -1,3 +1,4 @@
+#[derive(Debug)]
 enum LanundryCycle {
     Cold,
     Hot { temperature: u32 },
@@ -13,8 +14,8 @@ impl LanundryCycle {
             LanundryCycle::Hot { temperature } => {
                 println!("Running the laundry with a temperature of {temperature}");
             }
-            LanundryCycle::Delicate(fabric_type) => {
-                println!("Running the laundry with a delicate cycle for {fabric_type}");
+            other_status => {
+                println!("{:?}", other_status);
             }
         }
     }
