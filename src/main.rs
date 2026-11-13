@@ -1,14 +1,14 @@
 #[derive(Debug)]
-enum Milk {
-    Lowfat(i32),
-    Whole,
-    NonDairy { kind: String },
+struct TreasureChest<T> {
+    captain: String,
+    treasure: T,
 }
 
 fn main() {
-    let my_beverage = Milk::Whole;
+    let gold_chest = TreasureChest {
+        captain: String::from("Firebard"),
+        treasure: ["a", "b", "c"],
+    };
 
-    if let Milk::Whole = my_beverage {
-        println!("You have whole milk");
-    }
+    println!("{:?}", gold_chest);
 }
