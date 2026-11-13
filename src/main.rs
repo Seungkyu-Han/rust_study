@@ -16,6 +16,12 @@ impl TreasureChest<[&str; 3]> {
     }
 }
 
+impl<T> TreasureChest<T> {
+    fn capital_captain(&self) -> String {
+        self.captain.to_uppercase()
+    }
+}
+
 fn main() {
     let mut silver_chest = TreasureChest {
         captain: String::from("i am silver"),
@@ -32,4 +38,6 @@ fn main() {
     println!("{:?}", silver_chest);
 
     println!("{}", gold_chest.amount_of_treasure());
+
+    println!("{}", gold_chest.capital_captain());
 }
