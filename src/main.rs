@@ -1,13 +1,9 @@
 fn main() {
-    let musical_instruments: [String; 3] = [
-        String::from("Guitar"),
-        String::from("Drums"),
-        String::from("Bass"),
-    ];
+    let a: Option<i8> = Option::Some(1);
+    let b = Option::Some("hello");
+    let c = Option::Some(true);
+    let d = Option::<i16>::Some(5);
+    let mut e: Option<i32> = Option::None;
 
-    let third = musical_instruments.get(2);
-    let fourth: Option<&String> = musical_instruments.get(3);
-
-    println!("{:?}", third);
-    println!("{:?}", fourth);
+    e = Option::Some(1);
 }
