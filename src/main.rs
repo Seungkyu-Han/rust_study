@@ -5,12 +5,25 @@ fn main() {
         String::from("Bass"),
     ];
 
-    let bass = musical_instruments.get(0);
-    println!("{:?}", bass);
-    let valid_instrument = bass.expect("nothing");
+    let bass: Option<&String> = musical_instruments.get(2);
 
-    println!("{:?}", valid_instrument);
+    match bass {
+        Option::Some(instrument) => {
+            println!("Playing the {instrument}")
+        }
+        Option::None => {
+            println!("Singing with my voice");
+        }
+    }
 
     let invalid_instrument = musical_instruments.get(100);
-    invalid_instrument.expect("nothing1");
+
+    match invalid_instrument {
+        Option::Some(instrument) => {
+            println!("Playing the {instrument}")
+        }
+        Option::None => {
+            println!("Singing with my voice");
+        }
+    }
 }
