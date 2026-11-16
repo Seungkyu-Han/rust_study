@@ -1,9 +1,15 @@
-fn main() {
-    let text = "50";
-    let text_as_number = text.parse::<i32>();
-    println!("{:?}", text_as_number);
+fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
+    if denominator == 0.0 {
+        Err("denominator is zero".to_string())
+    } else {
+        Ok(numerator / denominator)
+    }
+}
 
-    let text1 = "wow";
-    let text_as_number1 = text1.parse::<i32>();
-    println!("{:?}", text_as_number1);
+fn main() {
+    let result1 = divide(10.0, 1.0);
+    println!("{:?}", result1);
+
+    let result2 = divide(10.0, 0.0);
+    println!("{:?}", result2);
 }
