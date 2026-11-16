@@ -1,29 +1,19 @@
-fn main() {
-    let musical_instruments = [
-        String::from("Guitar"),
-        String::from("Drums"),
-        String::from("Bass"),
-    ];
-
-    let bass: Option<&String> = musical_instruments.get(2);
-
-    match bass {
-        Option::Some(instrument) => {
-            println!("Playing the {instrument}")
-        }
-        Option::None => {
-            println!("Singing with my voice");
-        }
+fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
+    if item_is_in_system && item_is_in_stock {
+        Option::Some(true)
+    } else if item_is_in_system {
+        Option::Some(false)
+    } else {
+        Option::None
     }
+}
 
-    let invalid_instrument = musical_instruments.get(100);
+fn main() {
+    let availability = is_item_in_stock(true, true);
 
-    match invalid_instrument {
-        Option::Some(instrument) => {
-            println!("Playing the {instrument}")
-        }
-        Option::None => {
-            println!("Singing with my voice");
-        }
+    match availability {
+        Option::Some(true) => println!("item is available"),
+        Option::Some(false) => println!("Your item doesn't exist in out system"),
+        Option::None => println!("i am none"),
     }
 }
