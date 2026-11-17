@@ -1,14 +1,12 @@
 fn main() {
-    let mut pizza_diameters = vec![8, 10, 12, 14];
-    pizza_diameters.push(16);
-    pizza_diameters.insert(0, 6);
+    let pepperoni = String::from("pepperoni");
+    let mushroom = String::from("Mushroom");
+    let sausage = String::from("Sausage");
 
-    println!("{pizza_diameters:?}");
+    let pizza_toppings = vec![pepperoni, mushroom, sausage];
+    let mut delicious_toppings = pizza_toppings;
 
-    pizza_diameters.pop();
-    pizza_diameters.remove(0);
+    delicious_toppings.push(String::from("Olives"));
 
-    println!("{pizza_diameters:?}");
-    println!("{:?}", pizza_diameters.last());
-    println!("third is {:?}", pizza_diameters.get(2));
+    println!("{delicious_toppings:?}");
 }
