@@ -1,12 +1,27 @@
 fn main() {
-    let pepperoni = String::from("pepperoni");
-    let mushroom = String::from("Mushroom");
-    let sausage = String::from("Sausage");
+    let mut seasons: Vec<&str> = Vec::with_capacity(4);
+    println!(
+        "Length: {}, Capacity: {}",
+        seasons.len(),
+        seasons.capacity()
+    );
 
-    let pizza_toppings = vec![pepperoni, mushroom, sausage];
-    let mut delicious_toppings = pizza_toppings;
+    seasons.push("Summer");
+    seasons.push("Fall");
+    seasons.push("Winter");
+    seasons.push("Spring");
 
-    delicious_toppings.push(String::from("Olives"));
+    println!(
+        "Length: {}, Capacity: {}",
+        seasons.len(),
+        seasons.capacity()
+    );
 
-    println!("{delicious_toppings:?}");
+    seasons.push("Summer");
+
+    println!(
+        "Length: {}, Capacity: {}",
+        seasons.len(),
+        seasons.capacity()
+    );
 }
