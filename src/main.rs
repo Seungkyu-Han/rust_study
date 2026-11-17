@@ -1,27 +1,24 @@
+mod inventory {
+    const FLOOR_SPACE: i32 = 10000;
+    pub const MANAGER: &str = "Ivan inventory";
+
+    #[derive(Debug)]
+    enum ProductCategory {
+        Ladder,
+        Hammer,
+    }
+
+    struct Item {
+        name: String,
+        category: ProductCategory,
+        quantity: u32,
+    }
+
+    fn talk_to_manager() {
+        println!("Hey, {MANAGER}, how's your coffee?");
+    }
+}
+
 fn main() {
-    let mut seasons: Vec<&str> = Vec::with_capacity(4);
-    println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
-
-    seasons.push("Summer");
-    seasons.push("Fall");
-    seasons.push("Winter");
-    seasons.push("Spring");
-
-    println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
-
-    seasons.push("Summer");
-
-    println!(
-        "Length: {}, Capacity: {}",
-        seasons.len(),
-        seasons.capacity()
-    );
+    println!("The manager of our inventory is {}", inventory::MANAGER);
 }
