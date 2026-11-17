@@ -1,7 +1,9 @@
 fn main() {
-    let mut sauces = vec!["Mayonaise", "Ketchup", "Ranch"];
+    let pizza_diameters = vec![8, 10, 12];
 
-    while let Some(sauce) = sauces.pop() {
-        println!("next sauce is {sauce}");
-    }
+    println!("{pizza_diameters:?}");
+
+    let pastas = vec!["Rigatoni", "Angel hair", "Fettucine"];
+
+    println!("{pastas:?}");
 }
