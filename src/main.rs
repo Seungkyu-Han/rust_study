@@ -1,7 +1,6 @@
-use rust_study::GymWorkout;
-
 fn main() {
-    let work_out: GymWorkout = GymWorkout::new();
+    let first_name = String::from("Sylvester");
+    let last_name = String::from("Stallone");
 
-    println!("{:#?}", work_out);
+    let icon = format!("{0} {1} {0}", first_name, last_name);
 }
