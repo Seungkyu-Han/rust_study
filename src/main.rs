@@ -20,6 +20,10 @@ impl Hotel {
             reservations: HashMap::new(),
         }
     }
+
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.name, self.get_description())
+    }
 }
 
 impl Accomodation for Hotel {
