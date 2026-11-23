@@ -1,14 +1,6 @@
-fn main() {
-    let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
-
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
-    println!("{:?}", length_of_last_element(&mut animals));
+trait Accomodation {
+    fn get_description(&self) -> String;
+    fn book(&mut self, name: &str, nights: u32) -> String;
 }
 
-fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
-    let last_element = input.pop()?;
-
-    Some(last_element.len())
-}
+fn main() {}
