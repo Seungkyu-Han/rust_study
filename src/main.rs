@@ -1,8 +1,12 @@
+use std::io;
+
 fn main() {
-    let first_name = String::from("Sylvester");
-    let last_name = String::from("Stallone");
-
-    let icon = format!("{0} {1} {0}", first_name, last_name);
-
-    println!("{icon}");
+    let mut name = String::new();
+    println!("What is your name?");
+    let result = io::stdin().read_line(&mut name);
+    match result {
+        Ok(value) => println!("size is {value}"),
+        Err(_) => println!("this is error"),
+    }
+    println!("Hello, {name}");
 }
