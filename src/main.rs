@@ -8,7 +8,10 @@ fn main() {
 
     coffee_pairings.insert(&drink, &milk);
     coffee_pairings.insert("Flat White", "Almond Milk");
-    println!("{:?}", coffee_pairings);
-    coffee_pairings.insert("Latte", "Pistachio Milk");
-    println!("{:?}", coffee_pairings);
+
+    coffee_pairings.entry("Latte").or_insert("Pistacho Milk");
+    println!("{coffee_pairings:?}");
+
+    coffee_pairings.entry("mocha").or_insert("mocha latte");
+    println!("{coffee_pairings:?}");
 }
