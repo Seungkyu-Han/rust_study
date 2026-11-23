@@ -1,4 +1,5 @@
+use std::process;
+
 fn main() {
-    let a = 1;
-    panic!("Something went wrong");
+    process::exit(0);
 }
