@@ -3,15 +3,14 @@ use std::collections::HashSet;
 fn main() {
     let mut concert_queue: HashSet<&str> = HashSet::new();
 
-    concert_queue.insert("sk");
+    let mut movie_queue: HashSet<&str> = HashSet::new();
 
-    if concert_queue.contains("sk") {
-        println!("i am sk");
-    }
+    concert_queue.insert("Boris");
+    concert_queue.insert("Melissa");
 
-    concert_queue.insert("sk");
+    movie_queue.insert("Boris");
+    movie_queue.insert("Phil");
 
-    println!("{concert_queue:?}");
-
-    println!("{:?}", concert_queue.remove("sk"));
+    println!("{:?}", concert_queue.union(&movie_queue));
+    println!("{:?}", concert_queue.difference(&movie_queue));
 }
