@@ -7,11 +7,8 @@ fn main() {
     let milk = String::from("Oat Milk");
 
     coffee_pairings.insert(&drink, &milk);
-    coffee_pairings.insert("Flat white", "Almond milk");
-
-    let value1 = coffee_pairings["Flat white"];
-    let value2 = coffee_pairings.get("Flat white");
-
-    println!("{}", value1);
-    println!("{:?}", value2);
+    coffee_pairings.insert("Flat White", "Almond Milk");
+    println!("{:?}", coffee_pairings);
+    coffee_pairings.insert("Latte", "Pistachio Milk");
+    println!("{:?}", coffee_pairings);
 }
