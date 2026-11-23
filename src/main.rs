@@ -1,27 +1,14 @@
-use std::{
-    fs::File,
-    io::{Read, stdin},
-};
-
 fn main() {
-    println!("Please enter the name of the file you'd like to read: ");
+    let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
 
-    let mut input = String::new();
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+}
 
-    match stdin().read_line(&mut input) {
-        Ok(value) => {
-            println!("input length is {value}")
-        }
-        Err(_err) => {
-            panic!("input error");
-        }
-    };
+fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
+    let last_element = input.pop()?;
 
-    let mut file = File::open(input.trim()).expect("hello");
-
-    input.clear();
-
-    let read_operation = file.read_to_string(&mut input);
-
-    println!("{input}");
+    Some(last_element.len())
 }
