@@ -1,4 +1,7 @@
-use std::{fs::File, io::stdin};
+use std::{
+    fs::File,
+    io::{Read, stdin},
+};
 
 fn main() {
     println!("Please enter the name of the file you'd like to read: ");
@@ -14,7 +17,11 @@ fn main() {
         }
     };
 
-    let file = File::open(input.trim());
+    let mut file = File::open(input.trim()).expect("hello");
 
-    println!("{:?}", file);
+    input.clear();
+
+    let read_operation = file.read_to_string(&mut input);
+
+    println!("{input}");
 }
