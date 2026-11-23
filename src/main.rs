@@ -1,17 +1,17 @@
-use std::collections::HashMap;
+use std::collections::HashSet;
 
 fn main() {
-    let mut coffee_pairings: HashMap<&str, &str> = HashMap::new();
+    let mut concert_queue: HashSet<&str> = HashSet::new();
 
-    let drink = String::from("Latte");
-    let milk = String::from("Oat Milk");
+    concert_queue.insert("sk");
 
-    coffee_pairings.insert(&drink, &milk);
-    coffee_pairings.insert("Flat White", "Almond Milk");
+    if concert_queue.contains("sk") {
+        println!("i am sk");
+    }
 
-    coffee_pairings.entry("Latte").or_insert("Pistacho Milk");
-    println!("{coffee_pairings:?}");
+    concert_queue.insert("sk");
 
-    coffee_pairings.entry("mocha").or_insert("mocha latte");
-    println!("{coffee_pairings:?}");
+    println!("{concert_queue:?}");
+
+    println!("{:?}", concert_queue.remove("sk"));
 }
