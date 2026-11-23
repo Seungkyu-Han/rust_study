@@ -1,12 +1,18 @@
-use std::io;
+use std::collections::HashMap;
 
 fn main() {
-    let mut name = String::new();
-    println!("What is your name?");
-    let result = io::stdin().read_line(&mut name);
-    match result {
-        Ok(value) => println!("size is {value}"),
-        Err(_) => println!("this is error"),
-    }
-    println!("Hello, {name}");
+    let mut menu: HashMap<String, f64> = HashMap::new();
+
+    menu.insert(String::from("steak"), 29.99);
+    menu.insert(String::from("tuna"), 29.99);
+    menu.insert(String::from("burger"), 14.99);
+
+    println!("{menu:?}");
+
+    let mut country_capitals: HashMap<&str, &str> = HashMap::new();
+
+    country_capitals.insert("france", "Paris");
+    country_capitals.insert("Germany", "Berlin");
+
+    println!("{country_capitals:?}");
 }
