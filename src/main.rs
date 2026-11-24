@@ -1,6 +1,11 @@
 trait Taxable {
     const TAX_RATE: f64 = 0.25;
-    fn tax_bill(&self) -> f64;
+
+    fn amount(&self) -> f64;
+
+    fn tax_bill(&self) -> f64 {
+        self.amount() * Self::TAX_RATE
+    }
 }
 
 #[derive(Debug)]
@@ -9,8 +14,8 @@ struct Income {
 }
 
 impl Taxable for Income {
-    fn tax_bill(&self) -> f64 {
-        self.amount * Self::TAX_RATE
+    fn amount(&self) -> f64 {
+        self.amount
     }
 }
 
@@ -22,8 +27,8 @@ struct Bonus {
 impl Taxable for Bonus {
     const TAX_RATE: f64 = 0.5;
 
-    fn tax_bill(&self) -> f64 {
-        self.amount * Self::TAX_RATE
+    fn amount(&self) -> f64 {
+        self.amount
     }
 }
 
