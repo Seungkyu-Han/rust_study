@@ -1,15 +1,13 @@
-use std::ops::Add;
-use std::str::FromStr;
+use rust_study::{Accomodation, AirBnB, Description, Hotel, book_for_one_night, mix_and_match};
 
 fn main() {
-    let a: i32 = 5;
-    let b: i32 = 10;
+    let mut hotel = Hotel::new(String::from("The Luxe"));
+    println!("{}", hotel.summarize());
+    hotel.book("Dana", 5);
 
-    let sum = a.add(b);
+    let mut airbnb = AirBnB::new("Parker");
+    println!("{}", airbnb.get_description());
+    book_for_one_night(&mut airbnb, "Dan");
 
-    println!("{sum}");
-
-    let numeric_count = u64::from_str("5");
-
-    println!("{}", numeric_count.unwrap());
+    mix_and_match(&mut hotel, &mut airbnb, "Phil");
 }
