@@ -1,6 +1,4 @@
-trait Taxable {
-    const TAX_RATE: f64 = 0.25;
-
+trait Investment {
     fn amount(&self) -> f64;
 
     fn set_amount(&mut self, new_amount: f64);
@@ -8,6 +6,10 @@ trait Taxable {
     fn double_amount(&mut self) {
         self.set_amount(self.amount() * 2.0);
     }
+}
+
+trait Taxable: Investment {
+    const TAX_RATE: f64 = 0.25;
 
     fn tax_bill(&self) -> f64 {
         self.amount() * Self::TAX_RATE
@@ -19,7 +21,9 @@ struct Income {
     amount: f64,
 }
 
-impl Taxable for Income {
+impl Taxable for Income {}
+
+impl Investment for Income {
     fn amount(&self) -> f64 {
         self.amount
     }
@@ -31,18 +35,34 @@ impl Taxable for Income {
 
 #[derive(Debug)]
 struct Bonus {
-    amount: f64,
+    value: f64,
+}
+
+impl Investment for Bonus {
+    fn amount(&self) -> f64 {
+        self.value
+    }
+
+    fn set_amount(&mut self, new_amount: f64) {
+        self.value = new_amount;
+    }
 }
 
 impl Taxable for Bonus {
     const TAX_RATE: f64 = 0.5;
+}
 
+struct QualityTime {
+    minutes: f64,
+}
+
+impl Investment for QualityTime {
     fn amount(&self) -> f64 {
-        self.amount
+        self.minutes
     }
 
     fn set_amount(&mut self, new_amount: f64) {
-        self.amount = new_amount;
+        self.minutes = new_amount;
     }
 }
 
@@ -52,6 +72,6 @@ fn main() {
     income.double_amount();
     println!("Total tax owed: ${:.2}", income.tax_bill());
 
-    let bonus = Bonus { amount: 100.0 };
+    let bonus = Bonus { value: 100.0 };
     println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
 }
