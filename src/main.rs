@@ -1,4 +1,5 @@
-use rust_study::{Accomodation, AirBnB, Description, Hotel, book_for_one_night, mix_and_match};
+use rust_study::lodging::{Accomodation, AirBnB, Description, Hotel};
+use rust_study::utils::{book_for_one_night, mix_and_match};
 
 fn main() {
     let mut hotel = Hotel::new(String::from("The Luxe"));
