@@ -1,10 +1,13 @@
 use std::collections::HashMap;
 
 trait Accomodation {
-    fn get_description(&self) -> String {
-        String::from("A wonderful place")
-    }
     fn book(&mut self, name: &str, nights: u32);
+}
+
+trait Description {
+    fn get_description(&self) -> String {
+        String::from("A wonderful place to stay")
+    }
 }
 
 #[derive(Debug)]
@@ -27,12 +30,14 @@ impl Hotel {
 }
 
 impl Accomodation for Hotel {
-    // fn get_description(&self) -> String {
-    //     format!("{} is the pinnacle of luxury", self.name)
-    // }
-
     fn book(&mut self, name: &str, nights: u32) {
         self.reservations.insert(name.to_string(), nights);
+    }
+}
+
+impl Description for Hotel {
+    fn get_description(&self) -> String {
+        format!("Please enjoy {}'s apartment", self.name)
     }
 }
 
@@ -40,9 +45,16 @@ fn book_for_one_night<T: Accomodation>(entity: &mut T, guest: &str) {
     entity.book(guest, 1);
 }
 
-fn mix_and_match<T: Accomodation, A: Accomodation>(first: &mut T, second: &mut A, guest: &str) {
+fn mix_and_match(
+    first: &mut (impl Accomodation + Description),
+    second: &mut (impl Accomodation + Description),
+    guest: &str,
+) {
     first.book(guest, 1);
+    first.get_description();
+
     second.book(guest, 1);
+    second.get_description();
 }
 
 #[derive(Debug)]
@@ -61,12 +73,14 @@ impl AirBnB {
 }
 
 impl Accomodation for AirBnB {
-    fn get_description(&self) -> String {
-        format!("Please enjoy {}'s apartment", self.host)
-    }
-
     fn book(&mut self, name: &str, nights: u32) {
         self.guests.push((name.to_string(), nights));
+    }
+}
+
+impl Description for AirBnB {
+    fn get_description(&self) -> String {
+        format!("Please enjoy {}'s apartment", self.host)
     }
 }
 
