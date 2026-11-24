@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::fmt::Debug;
+use std::fmt::{Debug, Display};
 
 trait Accomodation {
     fn book(&mut self, name: &str, nights: u32);
@@ -12,15 +12,15 @@ trait Description {
 }
 
 #[derive(Debug)]
-struct Hotel {
-    name: String,
+struct Hotel<T> {
+    name: T,
     reservations: HashMap<String, u32>,
 }
 
-impl Hotel {
-    fn new(name: &str) -> Self {
+impl<T: Display> Hotel<T> {
+    fn new(name: T) -> Self {
         Self {
-            name: name.to_string(),
+            name,
             reservations: HashMap::new(),
         }
     }
@@ -30,13 +30,13 @@ impl Hotel {
     }
 }
 
-impl Accomodation for Hotel {
+impl<T> Accomodation for Hotel<T> {
     fn book(&mut self, name: &str, nights: u32) {
         self.reservations.insert(name.to_string(), nights);
     }
 }
 
-impl Description for Hotel {
+impl<T: Display> Description for Hotel<T> {
     fn get_description(&self) -> String {
         format!("Please enjoy {}'s apartment", self.name)
     }
