@@ -1,77 +1,21 @@
-trait Investment {
-    fn amount(&self) -> f64;
+use std::fmt::{Display, Formatter};
 
-    fn set_amount(&mut self, new_amount: f64);
-
-    fn double_amount(&mut self) {
-        self.set_amount(self.amount() * 2.0);
-    }
+struct Apple {
+    kind: String,
+    price: f64,
 }
 
-trait Taxable: Investment {
-    const TAX_RATE: f64 = 0.25;
-
-    fn tax_bill(&self) -> f64 {
-        self.amount() * Self::TAX_RATE
-    }
-}
-
-#[derive(Debug)]
-struct Income {
-    amount: f64,
-}
-
-impl Taxable for Income {}
-
-impl Investment for Income {
-    fn amount(&self) -> f64 {
-        self.amount
-    }
-
-    fn set_amount(&mut self, new_amount: f64) {
-        self.amount = new_amount;
-    }
-}
-
-#[derive(Debug)]
-struct Bonus {
-    value: f64,
-}
-
-impl Investment for Bonus {
-    fn amount(&self) -> f64 {
-        self.value
-    }
-
-    fn set_amount(&mut self, new_amount: f64) {
-        self.value = new_amount;
-    }
-}
-
-impl Taxable for Bonus {
-    const TAX_RATE: f64 = 0.5;
-}
-
-struct QualityTime {
-    minutes: f64,
-}
-
-impl Investment for QualityTime {
-    fn amount(&self) -> f64 {
-        self.minutes
-    }
-
-    fn set_amount(&mut self, new_amount: f64) {
-        self.minutes = new_amount;
+impl Display for Apple {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "apple for apple")
     }
 }
 
 fn main() {
-    let mut income = Income { amount: 500.00 };
-    println!("Total tax owed: ${:.2}", income.tax_bill());
-    income.double_amount();
-    println!("Total tax owed: ${:.2}", income.tax_bill());
+    let lunch_snack = Apple {
+        kind: String::from("Granny Smith"),
+        price: 1.05,
+    };
 
-    let bonus = Bonus { value: 100.0 };
-    println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
+    println!("{}", lunch_snack);
 }
