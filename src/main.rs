@@ -3,6 +3,12 @@ trait Taxable {
 
     fn amount(&self) -> f64;
 
+    fn set_amount(&mut self, new_amount: f64);
+
+    fn double_amount(&mut self) {
+        self.set_amount(self.amount() * 2.0);
+    }
+
     fn tax_bill(&self) -> f64 {
         self.amount() * Self::TAX_RATE
     }
@@ -17,6 +23,10 @@ impl Taxable for Income {
     fn amount(&self) -> f64 {
         self.amount
     }
+
+    fn set_amount(&mut self, new_amount: f64) {
+        self.amount = new_amount;
+    }
 }
 
 #[derive(Debug)]
@@ -30,11 +40,16 @@ impl Taxable for Bonus {
     fn amount(&self) -> f64 {
         self.amount
     }
+
+    fn set_amount(&mut self, new_amount: f64) {
+        self.amount = new_amount;
+    }
 }
 
 fn main() {
-    let income = Income { amount: 500.00 };
-
+    let mut income = Income { amount: 500.00 };
+    println!("Total tax owed: ${:.2}", income.tax_bill());
+    income.double_amount();
     println!("Total tax owed: ${:.2}", income.tax_bill());
 
     let bonus = Bonus { amount: 100.0 };
