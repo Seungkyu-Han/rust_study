@@ -1,97 +1,15 @@
-use std::collections::HashMap;
-use std::fmt::{Debug, Display};
-
-trait Accomodation {
-    fn book(&mut self, name: &str, nights: u32);
-}
-
-trait Description {
-    fn get_description(&self) -> String {
-        String::from("A wonderful place to stay")
-    }
-}
-
-#[derive(Debug)]
-struct Hotel<T> {
-    name: T,
-    reservations: HashMap<String, u32>,
-}
-
-impl<T: Display> Hotel<T> {
-    fn new(name: T) -> Self {
-        Self {
-            name,
-            reservations: HashMap::new(),
-        }
-    }
-
-    fn summarize(&self) -> String {
-        format!("{}: {}", self.name, self.get_description())
-    }
-}
-
-impl<T> Accomodation for Hotel<T> {
-    fn book(&mut self, name: &str, nights: u32) {
-        self.reservations.insert(name.to_string(), nights);
-    }
-}
-
-impl<T: Display> Description for Hotel<T> {
-    fn get_description(&self) -> String {
-        format!("Please enjoy {}'s apartment", self.name)
-    }
-}
-
-fn book_for_one_night<T: Accomodation>(entity: &mut T, guest: &str) {
-    entity.book(guest, 1);
-}
-
-fn mix_and_match<T, U>(first: &mut T, second: &mut U, guest: &str)
-where
-    T: Accomodation + Description,
-    U: Accomodation,
-{
-    first.book(guest, 1);
-    first.get_description();
-
-    second.book(guest, 1);
-}
-
-fn choose_best_place_to_stay() -> impl Accomodation + Description + Debug {
-    AirBnB::new("The Luxe")
-}
-
-#[derive(Debug)]
-struct AirBnB {
-    host: String,
-    guests: Vec<(String, u32)>,
-}
-
-impl AirBnB {
-    fn new(host: &str) -> Self {
-        Self {
-            host: host.to_string(),
-            guests: Vec::new(),
-        }
-    }
-}
-
-impl Accomodation for AirBnB {
-    fn book(&mut self, name: &str, nights: u32) {
-        self.guests.push((name.to_string(), nights));
-    }
-}
-
-impl Description for AirBnB {
-    fn get_description(&self) -> String {
-        format!("Please enjoy {}'s apartment", self.host)
-    }
-}
+use std::ops::Add;
+use std::str::FromStr;
 
 fn main() {
-    let mut hotel = choose_best_place_to_stay();
-    let mut airbnb = AirBnB::new("Peter");
+    let a: i32 = 5;
+    let b: i32 = 10;
 
-    mix_and_match(&mut hotel, &mut airbnb, "Piers");
-    println!("{hotel:#?} {airbnb:#?}");
+    let sum = a.add(b);
+
+    println!("{sum}");
+
+    let numeric_count = u64::from_str("5");
+
+    println!("{}", numeric_count.unwrap());
 }
