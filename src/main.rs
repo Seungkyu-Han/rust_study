@@ -36,6 +36,10 @@ impl Accomodation for Hotel {
     }
 }
 
+fn book_for_one_night(entity: &mut impl Accomodation, guest: &str) {
+    entity.book(guest, 1);
+}
+
 #[derive(Debug)]
 struct AirBnB {
     host: String,
@@ -63,6 +67,7 @@ impl Accomodation for AirBnB {
 
 fn main() {
     let mut hotel = Hotel::new(String::from("Seungkyu"));
+    book_for_one_night(&mut hotel, "guest");
     println!("{:#?}", hotel.get_description());
 
     hotel.book("Pires", 11);
