@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::Debug;
 
 trait Accomodation {
     fn book(&mut self, name: &str, nights: u32);
@@ -56,7 +57,7 @@ where
     second.book(guest, 1);
 }
 
-fn choose_best_place_to_stay() -> impl Accomodation + Description {
+fn choose_best_place_to_stay() -> impl Accomodation + Description + Debug {
     AirBnB::new("The Luxe")
 }
 
