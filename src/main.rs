@@ -56,6 +56,10 @@ where
     second.book(guest, 1);
 }
 
+fn choose_best_place_to_stay() -> impl Accomodation + Description {
+    AirBnB::new("The Luxe")
+}
+
 #[derive(Debug)]
 struct AirBnB {
     host: String,
@@ -84,7 +88,7 @@ impl Description for AirBnB {
 }
 
 fn main() {
-    let mut hotel = Hotel::new("The Luxe");
+    let mut hotel = choose_best_place_to_stay();
     let mut airbnb = AirBnB::new("Peter");
 
     mix_and_match(&mut hotel, &mut airbnb, "Piers");
