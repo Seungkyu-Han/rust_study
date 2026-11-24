@@ -14,9 +14,9 @@ struct Hotel {
 }
 
 impl Hotel {
-    fn new(name: String) -> Self {
+    fn new(name: &str) -> Self {
         Self {
-            name,
+            name: name.to_string(),
             reservations: HashMap::new(),
         }
     }
@@ -36,8 +36,13 @@ impl Accomodation for Hotel {
     }
 }
 
-fn book_for_one_night(entity: &mut impl Accomodation, guest: &str) {
+fn book_for_one_night<T: Accomodation>(entity: &mut T, guest: &str) {
     entity.book(guest, 1);
+}
+
+fn mix_and_match<T: Accomodation, A: Accomodation>(first: &mut T, second: &mut A, guest: &str) {
+    first.book(guest, 1);
+    second.book(guest, 1);
 }
 
 #[derive(Debug)]
@@ -66,15 +71,9 @@ impl Accomodation for AirBnB {
 }
 
 fn main() {
-    let mut hotel = Hotel::new(String::from("Seungkyu"));
-    book_for_one_night(&mut hotel, "guest");
-    println!("{:#?}", hotel.get_description());
+    let mut hotel = Hotel::new("The Luxe");
+    let mut airbnb = AirBnB::new("Peter");
 
-    hotel.book("Pires", 11);
-    println!("{:#?}", hotel);
-
-    let mut airbnb = AirBnB::new("peter");
-    airbnb.book("John", 5);
-
-    println!("{:?}", airbnb.get_description());
+    mix_and_match(&mut hotel, &mut airbnb, "Piers");
+    println!("{hotel:#?} {airbnb:#?}");
 }
