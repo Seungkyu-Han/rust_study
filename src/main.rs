@@ -1,14 +1,37 @@
-use rust_study::lodging::{Accomodation, AirBnB, Description, Hotel};
-use rust_study::utils::{book_for_one_night, mix_and_match};
+trait Taxable {
+    const TAX_RATE: f64 = 0.25;
+    fn tax_bill(&self) -> f64;
+}
+
+#[derive(Debug)]
+struct Income {
+    amount: f64,
+}
+
+impl Taxable for Income {
+    fn tax_bill(&self) -> f64 {
+        self.amount * Self::TAX_RATE
+    }
+}
+
+#[derive(Debug)]
+struct Bonus {
+    amount: f64,
+}
+
+impl Taxable for Bonus {
+    const TAX_RATE: f64 = 0.5;
+
+    fn tax_bill(&self) -> f64 {
+        self.amount * Self::TAX_RATE
+    }
+}
 
 fn main() {
-    let mut hotel = Hotel::new(String::from("The Luxe"));
-    println!("{}", hotel.summarize());
-    hotel.book("Dana", 5);
+    let income = Income { amount: 500.00 };
 
-    let mut airbnb = AirBnB::new("Parker");
-    println!("{}", airbnb.get_description());
-    book_for_one_night(&mut airbnb, "Dan");
+    println!("Total tax owed: ${:.2}", income.tax_bill());
 
-    mix_and_match(&mut hotel, &mut airbnb, "Phil");
+    let bonus = Bonus { amount: 100.0 };
+    println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
 }
