@@ -1,4 +1,6 @@
 use std::fmt::{Debug, Display, Formatter, Result};
+use std::fs;
+use std::ops::Drop;
 
 enum AppleType {
     RedDelicious,
@@ -19,6 +21,15 @@ impl Debug for AppleType {
         match self {
             AppleType::RedDelicious => writeln!(f, "DDDelicious"),
             AppleType::GrannySmith => writeln!(f, "GGGrany"),
+        }
+    }
+}
+
+impl Drop for Apple {
+    fn drop(&mut self) {
+        match fs::remove_file("apple.txt") {
+            Ok(_) => println!("apple is removed"),
+            Err(_) => println!("apple is error"),
         }
     }
 }
