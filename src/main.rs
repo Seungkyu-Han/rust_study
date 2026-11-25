@@ -1,55 +1,34 @@
-use std::fmt::{Debug, Display, Formatter, Result};
-use std::fs;
-use std::ops::Drop;
+use std::clone::Clone;
 
-enum AppleType {
-    RedDelicious,
-    GrannySmith,
+#[derive(Debug)]
+struct Appointment {
+    doctor: String,
+    start_time: String,
+    end_time: String,
 }
 
-impl Display for AppleType {
-    fn fmt(&self, formatter: &mut Formatter<'_>) -> Result {
-        match self {
-            AppleType::RedDelicious => writeln!(formatter, "DDDelicious"),
-            AppleType::GrannySmith => writeln!(formatter, "GGGrany"),
+impl Appointment {
+    fn new(doctor: &str, start_time: &str, end_time: &str) -> Self {
+        Self {
+            doctor: doctor.to_string(),
+            start_time: start_time.to_string(),
+            end_time: end_time.to_string(),
         }
     }
 }
 
-impl Debug for AppleType {
-    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
-        match self {
-            AppleType::RedDelicious => writeln!(f, "DDDelicious"),
-            AppleType::GrannySmith => writeln!(f, "GGGrany"),
+impl Clone for Appointment {
+    fn clone(&self) -> Self {
+        Self {
+            doctor: self.doctor.clone(),
+            start_time: self.start_time.clone(),
+            end_time: self.end_time.clone(),
         }
-    }
-}
-
-impl Drop for Apple {
-    fn drop(&mut self) {
-        match fs::remove_file("apple.txt") {
-            Ok(_) => println!("apple is removed"),
-            Err(_) => println!("apple is error"),
-        }
-    }
-}
-
-struct Apple {
-    kind: AppleType,
-    price: f64,
-}
-
-impl Display for Apple {
-    fn fmt(&self, formatter: &mut Formatter<'_>) -> Result {
-        write!(formatter, "{} for {}", self.kind, self.price)
     }
 }
 
 fn main() {
-    let lunck_snack = Apple {
-        kind: AppleType::RedDelicious,
-        price: 1.05,
-    };
+    let morning_appt: Appointment = Appointment::new("Dr. Andrews", "00:00", "00:00");
 
-    println!("{}", lunck_snack);
+    println!("{:?}", morning_appt.clone());
 }
