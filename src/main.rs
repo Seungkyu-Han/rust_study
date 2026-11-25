@@ -1,15 +1,34 @@
-#[derive(PartialEq)]
-enum Musician {
-    SingerSongWriter(String),
-    Band(u32),
+use std::cmp::Ordering;
+
+struct Job {
+    salary: u32,
+    commute_time: u32,
 }
 
-use Musician::{Band, SingerSongWriter};
+impl PartialEq for Job {
+    fn eq(&self, other: &Self) -> bool {
+        (self.salary > other.salary) && (self.commute_time > other.commute_time)
+    }
+}
+
+impl Eq for Job {}
+
+impl PartialOrd for Job {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        self.salary.partial_cmp(&other.salary)
+    }
+}
 
 fn main() {
-    let rustin_bieber = SingerSongWriter("Rustin".to_string());
+    let long_commute_job = Job {
+        salary: 1,
+        commute_time: 2,
+    };
 
-    let rust_no_one = Band(5);
+    let short_commute_job = Job {
+        salary: 0,
+        commute_time: 1,
+    };
 
-    println!("{}", rustin_bieber == rust_no_one);
+    println!("{}", long_commute_job > short_commute_job);
 }
