@@ -1,25 +1,31 @@
-#[derive(Debug, Clone)]
-struct Duration {
-    hours: u32,
-    minutes: u32,
-    seconds: u32,
+struct Flight {
+    origin: String,
+    destination: String,
+    time: String,
 }
 
-impl Duration {
-    fn new(hours: u32, minutes: u32, seconds: u32) -> Self {
+impl Flight {
+    fn new(origin: &str, destination: &str, time: &str) -> Self {
         Self {
-            hours,
-            minutes,
-            seconds,
+            origin: origin.to_string(),
+            destination: destination.to_string(),
+            time: time.to_string(),
         }
     }
 }
 
-impl Copy for Duration {}
+impl PartialEq for Flight {
+    fn eq(&self, other: &Self) -> bool {
+        self.origin == other.origin
+            && self.destination == other.destination
+            && self.time == other.time
+    }
+}
 
 fn main() {
-    let one_hour = Duration::new(1, 0, 0);
-    let another_hour = one_hour;
+    let a = Flight::new("a", "b", "c");
+    let b = Flight::new("a", "b", "c");
 
-    println!("{:?}", one_hour);
+    println!("{}", a == b);
+    println!("{}", a != b);
 }
