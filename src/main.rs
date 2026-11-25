@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter, Result};
+use std::fmt::{Debug, Display, Formatter, Result};
 
 enum AppleType {
     RedDelicious,
@@ -10,6 +10,15 @@ impl Display for AppleType {
         match self {
             AppleType::RedDelicious => writeln!(formatter, "DDDelicious"),
             AppleType::GrannySmith => writeln!(formatter, "GGGrany"),
+        }
+    }
+}
+
+impl Debug for AppleType {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        match self {
+            AppleType::RedDelicious => writeln!(f, "DDDelicious"),
+            AppleType::GrannySmith => writeln!(f, "GGGrany"),
         }
     }
 }
