@@ -1,39 +1,49 @@
-use std::io::stdin;
-
-struct Vault {
-    password: String,
-    treasure: String,
+#[derive(Debug)]
+struct Location {
+    name: String,
+    treasures: u32,
 }
 
-impl Vault {
-    fn unlock<F>(self, procedure: F) -> Option<String>
+struct Map<'a> {
+    locations: &'a [Location],
+}
+
+impl<'a> Map<'a> {
+    fn explore<F>(&self, mut action: F)
     where
-        F: FnOnce() -> String,
+        F: FnMut(&Location),
     {
-        let user_password = procedure();
-        if user_password == self.password {
-            Some(self.treasure)
-        } else {
-            None
+        let final_index = self.locations.len() - 1;
+        let mut current_index = 0;
+        while current_index <= final_index {
+            let current_location = &self.locations[current_index];
+            action(current_location);
+            current_index += 1;
         }
     }
 }
 
 fn main() {
-    let vault = Vault {
-        password: String::from("top secret"),
-        treasure: String::from("Gold"),
+    let locations = [
+        Location {
+            name: String::from("Enchanted Forest"),
+            treasures: 5,
+        },
+        Location {
+            name: String::from("Mystic"),
+            treasures: 10,
+        },
+    ];
+
+    let map = Map {
+        locations: &locations,
     };
 
-    let mut user_input = String::new();
+    let mut total_treasure = 0;
 
-    stdin().read_line(&mut user_input).unwrap();
+    map.explore(|location| {
+        total_treasure += location.treasures;
+    });
 
-    user_input = user_input.trim().to_string();
-
-    let hack = || user_input;
-
-    let ext = vault.unlock(hack);
-
-    println!("{:?}", ext);
+    println!("Total treasures collected: {total_treasure}");
 }
