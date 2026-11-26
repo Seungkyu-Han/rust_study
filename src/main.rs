@@ -1,11 +1,11 @@
 fn main() {
-    let multiplier = 5;
+    let mut numbers = vec![4, 8, 15, 16, 23, 42];
 
-    let multiply_by = |value| value + multiplier;
+    let mut add_number = || {
+        numbers.push(100);
+    };
 
-    println!("{}", multiply_by(3 as u8));
+    add_number();
 
-    let mirror = |value| value;
-
-    println!("{}", mirror("Why"));
+    println!("{:?}", numbers);
 }
