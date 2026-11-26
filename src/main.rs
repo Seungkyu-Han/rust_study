@@ -1,11 +1,12 @@
 fn main() {
-    let mut numbers = vec![4, 8, 15, 16, 23, 42];
+    let option = Some("Salami");
 
-    let mut add_number = || {
-        numbers.push(100);
-    };
+    let food = option.unwrap_or_else(|| "pizza");
+    println!("{food}");
 
-    add_number();
+    let option: Option<&str> = None;
+    let pizza_fan = false;
+    let food = option.unwrap_or_else(|| if pizza_fan { "Pizza" } else { "Hot potatao" });
 
-    println!("{:?}", numbers);
+    println!("{food}");
 }
