@@ -1,10 +1,15 @@
 fn main() {
-    let numbers: Vec<i32> = vec![4, 8, 15, 16, 23, 42];
+    let names = [
+        String::from("Jimmy"),
+        String::from("Cleveland"),
+        String::from("Boris"),
+    ];
 
-    let squares: Vec<i32> = numbers.iter().map(|&number| number.pow(2)).collect();
-    println!("{squares:?}");
+    let name_lengths: Vec<String> = names
+        .iter()
+        .map(|name| name.to_lowercase())
+        .map(|name| name.replace("i", "@@"))
+        .collect();
 
-    for number in squares {
-        println!("{number}");
-    }
+    println!("{name_lengths:?}");
 }
