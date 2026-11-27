@@ -1,7 +1,9 @@
 fn main() {
-    let numbers = [4, 8, 15, 16, 23, 42];
+    let earnings = [4, 7, 9, 13];
 
-    let groups: (Vec<i32>, Vec<i32>) = numbers.into_iter().partition(|number| number % 2 == 0);
+    let sum = earnings.into_iter().fold(0, |total, current| {
+        total + current
+    });
 
-    println!("{groups:?}");
+    println!("{sum}");
 }
