@@ -1,7 +1,15 @@
 fn main() {
-    let numbers = vec![4, 8, 15, 16, 23, 42];
+    let my_vector = vec![4, 8, 15, 16, 23, 42];
+    let mut my_iterator = my_vector.into_iter();
 
-    for number in numbers {
-        println!("{number}");
-    }
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
+    println!("{:?}", my_iterator.next());
 }
