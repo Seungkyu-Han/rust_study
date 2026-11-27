@@ -1,11 +1,7 @@
 fn main() {
-    let performers = ["Rustful Five", "Rustful in Peace", "Rustful in Bieber"];
+    let fifty_numbers = 1..=50;
 
-    let last = performers.into_iter().last().unwrap();
-
-    println!("{last:?}");
-
-    let second = performers.into_iter().nth(2).unwrap();
-
-    println!("{second:?}");
+    for number in fifty_numbers.rev().skip(10).take(15).step_by(4) {
+        print!("{number}/");
+    }
 }
