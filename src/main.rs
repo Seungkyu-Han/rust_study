@@ -1,14 +1,9 @@
-use std::collections::HashMap;
-
 fn main() {
-    let mut todos = HashMap::new();
+    let seafood = "Oyster ";
 
-    todos.insert("Pick up groceries", false);
-    todos.insert("Study Rust", false);
-
-    for (todo, completion_status) in &mut todos {
-        *completion_status = true;
+    for byte in seafood.bytes() {
+        print!("{byte}");
     }
 
-    println!("{todos:?}");
+    println!("{seafood}");
 }
