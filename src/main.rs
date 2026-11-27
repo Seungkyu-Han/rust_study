@@ -1,10 +1,7 @@
 fn main() {
-    let numbers = vec![4, 8, 15, 16, 23, 42];
+    let numbers: Vec<i32> = vec![4, 8, 15, 16, 23, 42];
 
-    let my_iter = numbers.iter();
-
-    let squares: Vec<String> = my_iter.map(|s| s.to_string()).collect();
-
+    let squares: Vec<i32> = numbers.iter().map(|&number| number.pow(2)).collect();
     println!("{squares:?}");
 
     for number in squares {
