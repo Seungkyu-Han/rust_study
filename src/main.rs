@@ -1,14 +1,7 @@
 fn main() {
-    let applicants = vec!["A", "B", "C", "D", "E", "F", "G", "H", "I"];
+    let numbers = [4, 8, 15, 16, 23, 42];
 
-    let winners: Vec<&str> = applicants
-        .into_iter()
-        .enumerate()
-        .map(|(index, s)| {
-            println!("{index} {s}");
-            s
-        })
-        .collect();
+    let groups: (Vec<i32>, Vec<i32>) = numbers.into_iter().partition(|number| number % 2 == 0);
 
-    println!("{winners:?}");
+    println!("{groups:?}");
 }
