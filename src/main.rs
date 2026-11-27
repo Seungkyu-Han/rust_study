@@ -1,15 +1,7 @@
 fn main() {
-    let names = [
-        String::from("Jimmy"),
-        String::from("Cleveland"),
-        String::from("Boris"),
-    ];
+    let numbers = [10, 13, 23, 2, 8, 9, 6];
 
-    let name_lengths: Vec<String> = names
-        .iter()
-        .map(|name| name.to_lowercase())
-        .map(|name| name.replace("i", "@@"))
-        .collect();
+    let evens: Vec<i32> = numbers.into_iter().filter(|&s| s > 10).collect();
 
-    println!("{name_lengths:?}");
+    println!("{evens:?}");
 }
