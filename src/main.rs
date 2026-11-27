@@ -1,13 +1,11 @@
 fn main() {
-    let numbers = vec![4, 8, 15, 16, 23, 42];
+    let performers = ["Rustful Five", "Rustful in Peace", "Rustful in Bieber"];
 
-    let total: i32 = numbers.iter().sum();
+    let last = performers.into_iter().last().unwrap();
 
-    println!("{total}");
+    println!("{last:?}");
 
-    let product: i32 = numbers.iter().product();
+    let second = performers.into_iter().nth(2).unwrap();
 
-    println!("{product}");
-
-    println!("{:?}", numbers.iter().count());
+    println!("{second:?}");
 }
