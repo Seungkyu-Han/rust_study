@@ -1,18 +1,21 @@
 fn main() {
-    let my_vector = vec![4, 8, 15, 16, 23, 42];
-    let my_iterator = my_vector.iter();
+    let mut flavors = [
+        String::from("Chocolate"),
+        String::from("Vanilla"),
+        String::from("Strawberry"),
+    ];
 
-    for number in my_vector.iter() {
-        println!("{number}");
+    let iterator = flavors.iter_mut();
+
+    for flavor in iterator {
+        (*flavor).push_str(" Ice Cream");
     }
 
-    println!("{my_iterator:?}");
+    let mut school_grades = [85, 90, 72, 92];
 
-    let cities = vec![String::from("Phoenix"), String::from("Dallas")];
-
-    for city in &cities {
-        println!("{city}");
+    for grade in &mut school_grades {
+        *grade -= 2;
     }
 
-    println!("{cities:?}");
+    println!("{school_grades:?}");
 }
