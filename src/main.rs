@@ -1,11 +1,7 @@
 fn main() {
-    let teas = [
-        String::from("Hot Earl Grey"),
-        String::from("Iced Green"),
-        String::from("Hot Matcha"),
-    ];
+    let spreadsheet = vec![[100, 200, 300], [123, 456, 789], [987, 654, 321]];
 
-    let more_teas: Vec<String> = teas.iter().cloned().collect();
+    let values = spreadsheet.into_flattened();
 
-    println!("{more_teas:?}");
+    println!("{values:?}");
 }
