@@ -1,11 +1,14 @@
 fn main() {
-    let attendees = ["A, B, C", "D, E, F", "G, H, I"];
+    let applicants = vec!["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 
-    let attendees: Vec<&str> = attendees
-        .iter()
-        .map(|group| group.split(", "))
-        .flatten()
+    let winners: Vec<&str> = applicants
+        .into_iter()
+        .enumerate()
+        .map(|(index, s)| {
+            println!("{index} {s}");
+            s
+        })
         .collect();
 
-    println!("{attendees:?}");
+    println!("{winners:?}");
 }
