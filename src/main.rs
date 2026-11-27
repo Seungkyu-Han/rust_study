@@ -1,9 +1,13 @@
 fn main() {
-    let earnings = [4, 7, 9, 13];
+    let numbers = vec![4, 8, 15, 16, 23, 42];
 
-    let sum = earnings.into_iter().fold(0, |total, current| {
-        total + current
-    });
+    let total: i32 = numbers.iter().sum();
 
-    println!("{sum}");
+    println!("{total}");
+
+    let product: i32 = numbers.iter().product();
+
+    println!("{product}");
+
+    println!("{:?}", numbers.iter().count());
 }
