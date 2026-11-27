@@ -1,7 +1,11 @@
 fn main() {
-    let spreadsheet = vec![[100, 200, 300], [123, 456, 789], [987, 654, 321]];
+    let attendees = ["A, B, C", "D, E, F", "G, H, I"];
 
-    let values = spreadsheet.into_flattened();
+    let attendees: Vec<&str> = attendees
+        .iter()
+        .map(|group| group.split(", "))
+        .flatten()
+        .collect();
 
-    println!("{values:?}");
+    println!("{attendees:?}");
 }
